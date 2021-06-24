@@ -1,16 +1,21 @@
 
 let count = 1;
 
-do {
+const evaluateSignal = (count) => {
     if (count % 3 === 0 && count % 5 === 0) {
-        console.log(`${count}: SCAN_FOR_TOWERS`);
+        return "SCAN_FOR_TOWERS";
     } else if (count % 5 === 0) {
-        console.log(`${count}: CHECK_CHANNEL_NOISE`);
+        return "CHECK_CHANNEL_NOISE";
     } else if (count % 3 === 0) {
-        console.log(`${count}: CHECK_SIGNAL_STRENGTH`);
-    } else {
-        console.log(`${count}: PING`)
+        return "CHECK_SIGNAL_STRENGTH";
     }
+    return "PING"
+}
+
+do {
+    let signal = evaluateSignal(count);
+    console.log(`${count}: ${signal}`)
     count++;
 
 } while (count <= 100)
+
